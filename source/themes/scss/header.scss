@@ -1,0 +1,12 @@
+﻿.mod_header {
+    height: 44px;
+    background: -webkit-linear-gradient(top, #ff9994, #fe7972);
+    display: -webkit-box;
+    div {
+        width: 40px;
+    }
+    h1 {
+        width: 0;
+        -webkit-box-flex: 1;
+    }
+}

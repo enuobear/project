@@ -4,3 +4,4 @@ source/**/*.css
 build/
 node_modules/
 psd/
+*.zip
