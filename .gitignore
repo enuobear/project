@@ -3,3 +3,4 @@ Thumbs.db
 source/**/*.css
 build/
 node_modules/
+psd/
