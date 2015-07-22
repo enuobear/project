@@ -1,0 +1,12 @@
+﻿@mixin chip_btn($width: 100%) {
+    width: $width;
+    display: block;
+    background: -webkit-linear-gradient(top, #fea19c, #ff8882);
+    text-align: center;
+    color: #fff;
+    line-height: 40px;
+}
+
+.mod_btn {
+    @include chip_btn();
+}
