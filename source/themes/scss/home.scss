@@ -136,3 +136,22 @@
         }
     }
 }
+//订单详情
+
+.order_info{
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+    background: -webkit-linear-gradient(top, #ffffff 20%, #efefef);
+    padding:15px 20px;
+    text-align:right;
+
+    .time{
+        color:$color_pink;
+        margin-bottom:10px;
+        display:inline-block;
+    }
+    div{
+        overflow:hidden;
+        text-align:left;
+    }
+}
