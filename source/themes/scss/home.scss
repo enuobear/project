@@ -1,0 +1,138 @@
+﻿// 订单支付
+.order_title{
+    background:#4c4b5b;
+    height:37px;
+    line-height:37px;
+    text-align:center;
+    color:$color_white;
+}
+
+
+
+.Pay_step{
+    margin:30px 0 20px 0;
+    box-shadow:0px -1px 0px #d0d0d0;
+    position:$pr;
+    padding-top:15px;
+    border:{
+        top:#dcdcdc solid 1px;
+    }
+    text-align:center;
+    h4{
+       @include center(110px,20px);
+       background:white;
+       margin-top:-118px;
+       color:#9f9f9f;
+       
+    }
+    div {
+        display:block;
+        text-align:center;
+
+        span{
+            color:#acacac;
+            height:40px;
+            line-height:40px;
+            display:inline-block;
+        }
+        span.cur{
+             color:$color_pink;
+        }
+        span i{
+            @include bg_icon1;
+            display:inline-block;
+            vertical-align: middle;
+            margin-right:10px;
+        }
+
+    }
+    div:nth-of-type(1){
+        span i{
+             background-position:0 0;
+            width:23px;
+            height:28px;
+        }
+    }
+    div:nth-of-type(2){
+        span i{
+           background-position: 0 -31px;
+            width: 34px;
+            height: 22px;
+        }
+    }
+    div:nth-of-type(3){
+        span i{
+             background-position: 0 -55px;
+            width: 27px;
+            height: 24px;
+        }
+    }
+    div:nth-of-type(4){
+        span i{
+             background-position: 0 -80px;
+                width: 27px;
+                height: 25px;
+
+        }
+    }
+    div:nth-of-type(5){
+        span i{
+            background-position: 0 -104px;
+            width: 26px;
+            height: 28px;
+        }
+    }
+
+}
+
+.order_succ{
+    text-align:center;
+    margin-top:30px ;
+    h3{
+        font-size:25px;
+        color:$color_pink;
+        font-weight:500;
+    }
+    p{
+        color:#adadad;
+    }
+    p:nth-of-type(1){
+        color:#4c4b5d;
+    }
+}
+
+// 头部右上　按钮
+.hd_more_btn:after{
+        content:" ";
+        @include bg_icon1;
+        background-position:-54px 0;
+        height:20px;
+        width:16px;
+        position:$ps;
+        margin:13px 0 0 8px;
+}
+// 我的订单
+.order_itmes {
+    overflow:hidden;
+    a{
+        background: -webkit-linear-gradient(top, #ffffff, #efefef);
+        min-height:50px;
+        padding:15px 25px 10px 25px;
+        overflow:hidden;
+        display:block;
+
+        h3{
+            color:#4b4a5a;
+        }
+        p{
+            color:#66697c;
+            em.color_pink{
+                color:$color_pink;
+            }
+        }
+        span{
+            float:right;
+            color:$color_pink;
+        }
+    }
+}

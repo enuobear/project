@@ -5,8 +5,18 @@
     text-align: center;
     color: #fff;
     line-height: 40px;
+         font-size:18px;
 }
 
 .mod_btn {
     @include chip_btn();
 }
+
+footer{
+     @include chip_btn();
+     height:52px;
+     line-height:52px;
+
+}
+
+$color_pink:#ff7f79;
