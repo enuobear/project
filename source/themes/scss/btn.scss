@@ -12,7 +12,7 @@
     @include chip_btn();
 }
 
-footer{
+.mod_btn{
     @include chip_btn();
     height:52px;
     line-height:52px;
