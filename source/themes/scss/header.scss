@@ -21,7 +21,7 @@
 }
 @mixin bg_icon1{
     background:url("images/icon1.png") no-repeat;
-    background-size: 200px 250px;
+    background-size: 200px 300px;
 }
 @mixin bg_icon2{
     background:url("images/icon2.png") no-repeat;
@@ -30,6 +30,7 @@
 $color_white :white;
 $pr:relative;
 $ps:absolute;
+$pst:static;
 
 
 .mod_header {

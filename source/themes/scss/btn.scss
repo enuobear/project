@@ -21,5 +21,11 @@
 	left: 0;
 
 }
+.mod_btn2{
+    @include chip_btn();
+    height:52px;
+    line-height:52px;
+
+}
 
 $color_pink:#ff7f79;
