@@ -31,7 +31,9 @@ $color_white :white;
 $pr:relative;
 $ps:absolute;
 $pst:static;
-
+.static{
+    position:$pst
+}
 
 .mod_header {
     height: 44px;
