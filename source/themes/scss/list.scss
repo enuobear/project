@@ -94,18 +94,26 @@ vertical-align: middle;
 		text-shadow: #ff605a 0 1px 0;
 	}
 	.pic_info{
-		@include center(140px,50px);
+		width:100%;
+		height:50px;
+		top:50%;
+		text-align:center;
+		margin-top:-25px;
+		position:$ps;
 		p{
 			font-size:34px;
 			color:$color_white;
+			text-align: center;
+			width: 100%;
 		}
 		span{
 			@include border-radius2(10px);
-			background:rgba(1,1,1,0.5);
-			line-height:20px;
-			padding:0 15px;
-			display:inline-block;
-			color:$color_white;
+			background: rgba(1, 1, 1, 0.5);
+			line-height: 20px;
+			padding: 0 15px;
+			display: inline-block;
+			color: white;
+			text-align: center;
 		}
 	}
 }
