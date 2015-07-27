@@ -259,3 +259,108 @@ $pst:static;
 .password_box{
     margin-top:125px;
 }
+// 登陆页面
+.my_center{
+    width:188px;
+    background:#4b4b5b;
+    margin:0 auto;
+    p{
+        text-align:center;
+        color:$color_white;
+        font-size:16px;
+        line-height:30px;
+    }
+}
+.my_header{
+    width:70px;
+    height:70px;
+    border:#66697a solid 2px;
+    border-radius:50%;
+    margin:0 auto;
+    overflow:hidden;
+    img{
+        width:100%;
+        height:100%
+    }
+
+
+}
+.my_itmes{
+    overflow:hidden;
+    padding:10px 0;
+    li{
+        line-height:35px;
+        border-top:#535567 solid 2px;
+        color:$color_white;
+        text-align:left;
+        padding-left:20px;
+
+    }
+}
+.my_icon1,.my_icon2,.my_icon3,.my_icon4,.my_icon5,.my_icon6,.my_icon7{
+  @include bg_icon1;
+  display:inline-block; 
+  width:17px;
+  height:20px;
+    vertical-align: middle;
+    margin-right:5px;
+}
+.my_icon1{
+    background-position:-185px 0;
+}
+.my_icon2{
+    background-position:-185px -30px;
+}
+.my_icon3{
+    background-position:-185px -60px;
+}
+.my_icon4{
+    background-position:-185px -90px;
+}
+.my_icon5{
+    background-position:-185px -120px;
+}
+.my_icon6{
+    background-position:-185px -150px;
+}
+.my_icon7{
+    background-position:-185px -180px;;
+}
+
+.phone_box{
+    width:255px;
+    height:175px;
+    background:#a5a6a6;
+    border-radius:10px;
+    margin:0 auto;
+    padding:20px 10px 10px 20px;
+}
+.phone_nums{
+    font-size:25px;
+    color:$color_white;
+
+}
+.phone_nums i{
+    @include bg_icon1;
+  display:inline-block;
+  vertical-align: middle;
+  background-position:0 -135px;
+  width:34px;
+  height:28px;
+
+}
+.bd_btns,.cancel_btns{
+    width:167px;
+    height:45px;
+    line-height:45px;
+    border-radius:30px;
+    display:block;
+    background: -webkit-linear-gradient(top, #fd9590, #fe7a72);
+    color:$color_white;
+    font-size:23px;
+    text-align:center;
+    margin:15px auto 0 auto;
+}
+.cancel_btns{
+    background:#a2a1a1
+}
