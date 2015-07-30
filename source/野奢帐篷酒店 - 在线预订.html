@@ -5,6 +5,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="format-detection" content="telephone=no" />
+
+        <script type="text/javascript" src="themes/js/zepto.min.js"></script>
         <link rel="stylesheet" href="themes/all.css" type="text/css" />
     </head>
     <body>
@@ -22,8 +24,23 @@
                     <span class="day_btns cur">尊享之旅</span>
                     <span class="day_btns">体验之旅</span>
                 </dd>
+                <p class="js_btn"></p>
+                <div class="js_list" style="display:none;">
+                    <dd>
+                        <span class="day_btns cur">尊享之旅</span>
+                        <span class="day_btns">体验之旅</span>
+                    </dd>
+                    <dd>
+                        <span class="day_btns cur">尊享之旅</span>
+                        <span class="day_btns">体验之旅</span>
+                    </dd>
+                    <dd>
+                        <span class="day_btns cur">尊享之旅</span>
+                        <span class="day_btns">体验之旅</span>
+                    </dd>
+                </div>
             </dl>
-            <div class="calendar">
+<!--             <div class="calendar">
                 <div class="mod_header calendar_hd">
                     <div></div>
                     <h3>
@@ -89,7 +106,130 @@
                     </ul>
                 </div>
                 <div class="choose_day">选择出发日期</div>
-            </div>
+            </div> -->
+
+        <script type="text/javascript" src="themes/js/calendar.js"></script>
+        <section class="calendar">
+
+            <ul class="this_month">
+                <li class="js_month_left"><</li>
+                <li class="js_month">2015年-5月</li>
+                <li class="js_month_right">></li>
+            </ul>
+
+            <ul class="this_week">
+                <li>周一</li>
+                <li>周二</li>
+                <li>周三</li>
+                <li>周四</li>
+                <li>周五</li>
+                <li>周六</li>
+                <li>周日</li>
+            </ul>
+
+
+            <section class="js_calendar this_date_slide">
+                <div class="this_colgroup">
+                    <ul class="this_date">
+                        <li>
+                            <div></div><div></div><div></div>
+                            <div></div><div></div><div>1</div>
+                            <div>2</div>
+                        </li>
+                        <li>
+                            <div>3</div><div>4</div><div>5</div>
+                            <div>6</div><div>7</div><div class="selected">8</div>
+                            <div>9</div>
+                        </li>
+                        <li>
+                            <div>10</div><div>11</div><div>12</div>
+                            <div>13</div><div>14</div><div>15</div>
+                            <div>16</div>
+                        </li>
+                        <li>
+                            <div>17</div><div>18</div><div>19</div>
+                            <div>20</div><div>21</div><div>22</div>
+                            <div>23</div>
+                        </li>
+                        <li>
+                            <div>24</div><div>25</div><div>26</div>
+                            <div>27</div><div>28</div><div>29</div>
+                            <div>30</div>
+                        </li>
+                        <li>
+                            <div>31</div><div></div><div></div>
+                            <div></div><div></div><div></div>
+                            <div></div>
+                        </li>
+                    </ul>
+                    <ul class="this_date">
+                        <li>
+                            <div></div><div></div><div></div>
+                            <div></div><div></div><div>1</div>
+                            <div>2</div>
+                        </li>
+                        <li>
+                            <div>3</div><div>4</div><div>5</div>
+                            <div>6</div><div>7</div><div class="selected">8</div>
+                            <div>9</div>
+                        </li>
+                        <li>
+                            <div>10</div><div>11</div><div>12</div>
+                            <div>13</div><div>14</div><div>15</div>
+                            <div>16</div>
+                        </li>
+                        <li>
+                            <div>17</div><div>18</div><div>19</div>
+                            <div>20</div><div>21</div><div>22</div>
+                            <div>23</div>
+                        </li>
+                        <li>
+                            <div>24</div><div>25</div><div>26</div>
+                            <div>27</div><div>28</div><div>29</div>
+                            <div>30</div>
+                        </li>
+                        <li>
+                            <div>31</div><div></div><div></div>
+                            <div></div><div></div><div></div>
+                            <div></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <script type="text/javascript">
+        (function(){
+            var $calendar = $('.js_calendar'),
+                len = $calendar.length;
+
+            for (var i=0; i<len; i++) {
+                var calendar = new Calendar();
+                
+                calendar.init({
+                    elem: '.js_calendar',
+                    z: i,
+                    title: ['2015年-5月','2015年-6月']
+                });
+            }
+        })();
+        (function(){
+            var $date = $('.js_calendar .this_date div');
+
+            $date.on('click', function(){
+                var state = $(this).hasClass('selected');
+
+                if (state) {
+                    $(this).removeClass('selected');
+                } else {
+                    $(this).addClass('selected');
+                }
+            })
+        })();
+        </script>
+
+
+            <div class="choose_day">选择出发日期</div>
+
             <div class="mod_choose">
                 <h4><i class="city_icon"></i>出发城市</h4>
                 <div class="choose_city">
@@ -197,5 +337,24 @@
             </div>
         </section>
         <footer class="mod_btn static">提 交 订 单</footer>
+
+
+        <script type="text/javascript">
+            var $btn = $('.js_btn'),
+                $list = $('.js_list'),
+                isClicked = false;
+
+            $btn.on('click', function () {
+                if (isClicked) {
+                    $list.hide();
+                    $btn.removeClass('this_show');
+                } else {
+                    $list.show();
+                    $btn.addClass('this_show');
+                }
+                isClicked = !isClicked;       
+            });
+        </script>
+
     </body>
 </html>

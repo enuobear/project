@@ -700,6 +700,18 @@ vertical-align: middle;
 }
 .trip_choose{
 	background: -webkit-linear-gradient(top, #4c4b5b, #393945);
+
+	p {
+		margin-bottom: 10px;
+		height: 30px;
+		background: url(images/icon_arrow_down.png) no-repeat center center;
+		background-size: 30px auto;
+		&.this_show {
+			background: url(images/icon_arrow_up.png) no-repeat center center;
+			background-size: 30px auto;
+		}
+	}
+
 }
 .trip_choose dd{
 	padding:18px 0;
@@ -1006,4 +1018,79 @@ vertical-align: middle;
     width:35px;
 	background-position:-136px 0;
 	display:inline-block
+}
+
+
+
+.calendar{
+
+    .this_month{
+        background: #4c4b5b;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        display: -webkit-box;
+        @include border_bottom_half;
+        li{
+            &:nth-child(1),
+            &:nth-child(3){
+                width: 40px;
+            }
+            &:nth-child(2){
+                -webkit-box-flex: 1;
+            }
+        }
+    }
+
+    .this_week{
+        display: -webkit-box;
+        background: #a1a6ba;
+        li{
+            width: 0;
+            -webkit-box-flex: 1;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            @include border_right_half;
+            &:last-child{
+                // border-right: 0;
+            }
+        }
+    }
+
+    .this_date_slide{
+        width: 100%;
+        overflow: hidden;
+        .this_colgroup{
+            display: -webkit-box;
+            .this_date{
+                display: block;
+                width: 100%;
+                li{
+                    width: 100%;
+                    line-height: 40px;
+                    display: -webkit-box;
+                    &:nth-child(odd){
+                        background: #eeefef;
+                    }
+                    &:nth-child(even){
+                        background: #dcdcdd;
+                    }
+                    div{
+                        text-align: center;
+                        width: 0;
+                        -webkit-box-flex: 1;
+                        @include border_right_half;
+                        &:last-child{
+                            // border-right: 0;
+                        }
+                        &.selected{
+                            background: #fe7e75;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
