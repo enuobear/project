@@ -27,6 +27,17 @@
     background:url("images/icon2.png") no-repeat;
     background-size: 300px 150px;
 }
+@mixin bg_icon3{
+    background:url("images/normal_icon.png") no-repeat;
+    background-size: 47.5px 265.5px;
+}
+
+@mixin bg_icon4{
+    background:url("images/cur_icon.png") no-repeat;
+    background-size: 47.5px 265.5px;
+}
+
+
 $color_white :white;
 $pr:relative;
 $ps:absolute;
