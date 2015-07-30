@@ -273,14 +273,16 @@ vertical-align: middle;
 	height:117px;
 	overflow:hidden;
 	position:$pr;
+	margin:0 auto;
 	ul{
-		width:100%;
-		height:117px;
+		overflow:hidden;
+		position:$pr;
 		li{
 			width:100%;
 			height:117px;
 			position:$pr;
 			background:#798021;
+			float:left;
 
 			img{
 				width:320px;

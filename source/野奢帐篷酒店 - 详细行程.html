@@ -18,7 +18,7 @@
         </header>
         <section>
         <div class="pic_list_box">
-            <div class="fouse_box">
+            <div class="fouse_box" id="slider1">
                 <ul>
                     <li>
                         <img src="themes/images/pic4.jpg">
@@ -28,8 +28,8 @@
                     <li><img src="themes/images/pic4.jpg"></li>
                 </ul>
                 <div class="fouse_btns">
-                    <span class="fouse_l">左</span>
-                    <span class="fouse_r">右</span>
+                    <span class="fouse_l fouse_l_1">左</span>
+                    <span class="fouse_r fouse_r_1">右</span>
                 </div>
                 
             </div>
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="pic_list_box">
-            <div class="fouse_box">
+            <div class="fouse_box" id="slider2">
                 <ul>
                     <li>
                         <img src="themes/images/pic4.jpg">
@@ -53,8 +53,8 @@
                     <li><img src="themes/images/pic4.jpg"></li>
                 </ul>
                 <div class="fouse_btns">
-                    <span class="fouse_l">左</span>
-                    <span class="fouse_r">右</span>
+                    <span class="fouse_l fouse_l_2">左</span>
+                    <span class="fouse_r fouse_r_2">右</span>
                 </div>
                 
             </div>
@@ -85,4 +85,33 @@
         </dl>
         </section>
     </body>
+<script type="text/javascript" src="themes/js/swipe.js"></script>
+<script type="text/javascript" src="themes/js/jquery-1.11.js"></script>
+<script type="text/javascript">
+var slider1 = document.getElementById('slider1');
+            window.mySwipe = Swipe(slider1,{
+               disableScroll: false,
+               startSlide:0,
+               callback: function(index, element) {
+                }              
+              
+            });
+var slider2 = document.getElementById('slider2');
+            window.mySwipe = Swipe(slider2,{
+               disableScroll: false,
+               startSlide:0,
+               callback: function(index, element) {
+                }              
+              
+            });
+$('.fouse_l')[0].addEventListener('click', function (event) {
+        mySwipe.prev();
+
+    }, false);
+$('.fouse_r')[0].addEventListener('click', function (event) {
+    mySwipe.next();
+}, false);
+
+
+</script>
 </html>

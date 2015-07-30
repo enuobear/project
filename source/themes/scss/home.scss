@@ -356,6 +356,18 @@
             height:100%;
             border-radius: 52px;
         }
+        .mesg_nums{
+            position: $ps;
+            top: 69px;
+            height: 15px;
+            border: red solid 1px;
+            border-radius: 4px;
+            right: -22px;
+            background: red;
+            width: 15px;
+            color: white;
+            line-height: 15px;
+        }
         .icon_1{
             @include bg_icon1;
             background-position: -36px -87px;
