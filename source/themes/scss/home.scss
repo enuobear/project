@@ -45,79 +45,152 @@
         }
 
     }
-    div:nth-of-type(1){
-        span i{
-            background:url("../themes/images/bank_icon1.png") no-repeat;
-            background-size:29px 36px;
-            width:29px;
-            height:36px;
+    div {
+        &.icon_ali {
+            span {
+                i {
+                    background:url("../themes/images/bank_icon1.png") no-repeat;
+                    background-size:29px 36px;
+                    width:29px;
+                    height:36px; 
+                }
+                &.cur i {
+                    background:url("../themes/images/bank_icon1_cur.png") no-repeat;
+                    background-size:30px 35px;
+                }
+            }
+        }
+        &.icon_yinlian {
+            span {
+                i {
+                    background:url("../themes/images/bank_icon2.png") no-repeat;
+                    background-size:48px 29px;
+                    width: 48px;
+                    height: 29px;
+                }
+                &.cur i {
+                    background:url("../themes/images/bank_icon2_cur.png") no-repeat;
+                    background-size:48px 29px;
+                }
+            }
+        }
+        &.icon_chuxu {
+            span {
+                i {
+                    background:url("../themes/images/bank_icon3.png") no-repeat;
+                    background-size:35px 28px;
+                    width: 35px;
+                    height: 28px;
+                }
+                &.cur i {
+                    background:url("../themes/images/bank_icon3_cur.png") no-repeat;
+                    background-size:35px 28px;
+                }
+            }
+        }
+        &.icon_weixin {
+            span {
+                i {
+                    background:url("../themes/images/bank_icon4.png") no-repeat;
+                    background-size:35px 31px;
+                    width: 35px;
+                    height: 31px; 
+                }
+                &.cur i {
+                    background:url("../themes/images/bank_icon4_cur.png") no-repeat;
+                    background-size:35px 31px;
+                }
+            }
+        }
+        &.icon_xinyong {
+            span {
+                i {
+                    background:url("../themes/images/bank_icon5.png") no-repeat;
+                    background-size:31px 35px;
+                    width: 31px;
+                    height: 35px;
+                }
+                &.cur i {
+                    background:url("../themes/images/bank_icon5_cur.png") no-repeat;
+                    background-size:31px 35px;
+                }
+            }
         }
     }
-    div:nth-of-type(2){
-        span i{
-           background:url("../themes/images/bank_icon2.png") no-repeat;
-            background-size:48px 29px;
-            width: 48px;
-            height: 29px;
-        }
-    }
-    div:nth-of-type(3){
-        span i{
-            background:url("../themes/images/bank_icon3.png") no-repeat;
-            background-size:35px 28px;
-            width: 35px;
-            height: 28px;
-        }
-    }
-    div:nth-of-type(4){
-        span i{
-             background:url("../themes/images/bank_icon4.png") no-repeat;
-            background-size:35px 31px;
-                width: 35px;
-                height: 31px;
 
-        }
-    }
-    div:nth-of-type(5){
-        span i{
-            background:url("../themes/images/bank_icon5.png") no-repeat;
-            background-size:31px 35px;
-            width: 31px;
-            height: 35px;
-        }
-    }
+    // div:nth-of-type(1){
+    //     span i{
+    //         background:url("../themes/images/bank_icon1.png") no-repeat;
+    //         background-size:29px 36px;
+    //         width:29px;
+    //         height:36px;
+    //     }
+    // }
+    // div:nth-of-type(2){
+    //     span i{
+    //        background:url("../themes/images/bank_icon2.png") no-repeat;
+    //         background-size:48px 29px;
+    //         width: 48px;
+    //         height: 29px;
+    //     }
+    // }
+    // div:nth-of-type(3){
+    //     span i{
+    //         background:url("../themes/images/bank_icon3.png") no-repeat;
+    //         background-size:35px 28px;
+    //         width: 35px;
+    //         height: 28px;
+    //     }
+    // }
+    // div:nth-of-type(4){
+    //     span i{
+    //          background:url("../themes/images/bank_icon4.png") no-repeat;
+    //         background-size:35px 31px;
+    //             width: 35px;
+    //             height: 31px;
+
+    //     }
+    // }
+    // div:nth-of-type(5){
+    //     span i{
+    //         background:url("../themes/images/bank_icon5.png") no-repeat;
+    //         background-size:31px 35px;
+    //         width: 31px;
+    //         height: 35px;
+    //     }
+    // }
 
 
-    div:nth-of-type(1){
-        span.cur i{
-             background:url("../themes/images/bank_icon1_cur.png") no-repeat;
-             background-size:30px 35px;
-        }
-    }
-    div:nth-of-type(2){
-        span.cur i{
-            background:url("../themes/images/bank_icon2_cur.png") no-repeat;
-             background-size:48px 29px;
-        }
-    }
-    div:nth-of-type(3){
-        span.cur i{
-             background:url("../themes/images/bank_icon3_cur.png") no-repeat;
-             background-size:35px 28px;
-        }
-    }
-    div:nth-of-type(4){
-        span.cur i{
-              background:url("../themes/images/bank_icon4_cur.png") no-repeat;
-              background-size:35px 31px;
-        }
-    }
-    div:nth-of-type(5){
-        span.cur i{
-            background:url("../themes/images/bank_icon5_cur.png") no-repeat;
-            background-size:31px 35px;
-        }
-    }
+    // div:nth-of-type(1){
+    //     span.cur i{
+    //          background:url("../themes/images/bank_icon1_cur.png") no-repeat;
+    //          background-size:30px 35px;
+    //     }
+    // }
+    // div:nth-of-type(2){
+    //     span.cur i{
+    //         background:url("../themes/images/bank_icon2_cur.png") no-repeat;
+    //          background-size:48px 29px;
+    //     }
+    // }
+    // div:nth-of-type(3){
+    //     span.cur i{
+    //          background:url("../themes/images/bank_icon3_cur.png") no-repeat;
+    //          background-size:35px 28px;
+    //     }
+    // }
+    // div:nth-of-type(4){
+    //     span.cur i{
+    //           background:url("../themes/images/bank_icon4_cur.png") no-repeat;
+    //           background-size:35px 31px;
+    //     }
+    // }
+    // div:nth-of-type(5){
+    //     span.cur i{
+    //         background:url("../themes/images/bank_icon5_cur.png") no-repeat;
+    //         background-size:31px 35px;
+    //     }
+    // }
 
 
 }
