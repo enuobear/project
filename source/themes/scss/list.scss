@@ -343,6 +343,39 @@ vertical-align: middle;
 		margin-top:-10px;
 		text-indent:-999em;
 	}
+
+	.this_price {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		.fouse_price{ 
+			position:$ps;
+			left:10px;
+			bottom:0px;
+			color:$color_white;
+			font-size:25px;
+			em{
+				font-size:15px;
+			}
+		}
+		.fouse_link{
+			position:$ps;
+			right:10px;
+			bottom:5px;
+			color:$color_white;
+			font-size:15px;
+			em{
+				@include bg_icon1;	
+				background-position:-136.5px -23.5px;
+				width:17px;
+				height:13px;
+				display:inline-block;
+				vertical-align:middle;
+				margin-right:5px;
+			}
+		}
+	}
 }
 
 .trip_info{
