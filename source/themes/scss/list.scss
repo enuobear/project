@@ -375,6 +375,34 @@ vertical-align: middle;
 				margin-right:5px;
 			}
 		}
+
+		.icon_love {
+			position: absolute;
+			right: 10px;
+			bottom: 5px;
+			height: 30px;
+			line-height: 30px;
+			color: #fff;
+			font-size: 15px;
+			&:before {
+				display: inline-block;
+				vertical-align: middle;
+				content: "";
+				height: 20px;
+				width: 20px;
+				margin-right: 5px;
+				background: url(images/icon_love.png) no-repeat 0 0;
+				background-size: 100% auto;
+			}
+			&.current {
+				&:before {
+					width: 25px;
+					height: 25px;
+					background: url(images/icon_love_cur.png) no-repeat 0 0;
+					background-size: 100% auto;
+				}
+			}
+		}
 	}
 }
 
