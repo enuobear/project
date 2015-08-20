@@ -4,3 +4,14 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+    }
+}
+
+$orange: #f6931e;

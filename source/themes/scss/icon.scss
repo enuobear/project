@@ -1,0 +1,29 @@
+﻿@mixin icon ($image) {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url("images/#{$image}.jpg") no-repeat center;
+    // background: $image;
+}
+
+
+.icon_car {
+    @include icon(icon_car);
+}
+
+.icon_air {
+    @include icon(icon_air);
+}
+
+.icon_food {
+    @include icon(icon_food);
+}
+
+.icon_train {
+    @include icon(icon_train);
+}
+
+.icon_hotel {
+    @include icon(icon_hotel);
+}
