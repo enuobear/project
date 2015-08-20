@@ -1,0 +1,6 @@
+﻿//文字超出显示...
+@mixin ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
