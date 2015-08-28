@@ -1,11 +1,11 @@
 ﻿//文字超出显示...
-@mixin ellipsis {
+@mixin ellipsis() {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-@mixin clearfix {
+@mixin clearfix() {
     &:after {
         content: "";
         display: block;
@@ -14,4 +14,42 @@
     }
 }
 
-$orange: #b9a988;
+@mixin text-shadow() {
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+@mixin border-radius($radius: 3px) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+         -o-border-radius: $radius;
+            border-radius: $radius;
+}
+
+
+@mixin box-y() {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+
+@mixin page($name: other, $clapp: #7a89a8, $clweb: #717fa2) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+    @media only screen and (min-width: 720px){
+        background: url(images/bg_web_#{$name}.jpg) no-repeat 0 bottom fixed $clweb;
+        background-size: 100% auto;
+    }
+    
+    @media only screen and (max-width: 720px){
+        background: url(images/bg_app_#{$name}.jpg) no-repeat 0 bottom fixed $clapp;
+        background-size: 100% auto;
+    }
+    
+}

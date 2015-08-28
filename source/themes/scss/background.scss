@@ -1,0 +1,20 @@
+﻿@mixin bg ($type: app, $name: other, $color: #7a89a8) {
+    background: url(images/bg_#{$type}_#{$name}.jpg) no-repeat 0 bottom fixed $color;
+    background-size: 100% auto;
+}
+
+.bg_video {
+    @include bg($type: app, $name: video, $color: #82b6db);
+}
+
+.bg_app {
+    @include bg($type: app, $name: app, $color: #6abce2);
+}
+
+.bg_detail {
+    @include bg($type: app, $name: detail, $color: #3fa1ea);
+}
+
+.bg_other {
+    @include bg($type: app, $name: other, $color: #7a89a8);
+}

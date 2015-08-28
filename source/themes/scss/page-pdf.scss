@@ -1,0 +1,47 @@
+﻿.pdf_detail {
+    padding-top: 80px;
+    .t_text {
+        h2, h3 {
+            text-align: center;
+            @include text-shadow();
+        }
+        h2 {
+            font-size: 18px;
+        }
+        h3 {
+            font-size: 16px;
+            line-height: 40px;
+        }
+        div {
+            padding: 0 20px;
+            p {
+                line-height: 20px;
+                font-size: 12px;
+                color: #000;
+            }
+        }
+    }
+
+    .t_img {
+        max-width: 300px;
+        margin: 0 auto;
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    ul {
+        li {
+            display: block;
+            padding: 0 20px;
+            line-height: 30px;
+            img {
+                width: 20px;
+            }
+            i {
+                font-size: 12px;
+            }
+        }
+    }
+}

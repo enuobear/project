@@ -1,0 +1,52 @@
+﻿.mod_detail {
+    @include page($name: detail, $clapp: #3fa1ea, $clweb: #4eaafe);
+
+    .detail_text {
+        line-height: 20px;
+        text-align: center;
+        padding: 10px 20px;
+        @include text-shadow();
+    }
+
+    .detail_slide {
+        -webkit-box-flex: 1;
+        position: relative;
+        ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+
+            display: -webkit-box;
+            display: none;
+            li {
+                text-align: center;
+                display: block;
+                position: relative;
+
+                @include box-y();
+
+                div {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+
+                    @include box-y();
+
+                    p {
+                        display: block;
+                        line-height: 20px;
+                        height: 40px;
+                        margin-bottom: 10px;
+                    }
+                    img {
+                        -webkit-box-flex: 1;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }   
+}

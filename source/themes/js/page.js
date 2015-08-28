@@ -12,3 +12,24 @@ $(window).on('scroll', function () {
     }
     console.log(top - stop);
 });
+
+
+(function() {
+    var slide = {
+        showDom: function () {
+            var $width = $(document.body).width();
+
+            $(".js_slide ul li").css({
+                "width": $width
+            });
+            $(".js_slide ul").css({
+                "display": "-webkit-box"
+            });
+        }
+    };
+
+    slide.showDom();
+    $(window).resize(function () {
+        slide.showDom();
+    });
+})();
