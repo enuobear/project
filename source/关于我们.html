@@ -8,41 +8,48 @@
     <link rel="stylesheet" href="themes/all.css" type="text/css" />
 </head>
 <body>
-    <div class="mod_about">
+    <div id="js_view" class="mod_body">
         <div class="mod_header">
             <div class="t_logo"><img src="themes/images/logo.png" />亲陪</div>
 
-            <div class="t_menu">
+            <div class="js_menu t_menu">
                 <div><img src="themes/images/icon_menu.png" /></div>
                 <ul>
-                    <li><a href="">微视频</a></li>
-                    <li><a href="">APP客户端</a></li>
-                    <li><a href="">精彩内容</a></li>
-                    <li><a href="">PDF阅读</a></li>
-                    <li><a href="">关于我们</a></li>
+                    <li><a href="布局.html?tab=0">微视频</a></li>
+                    <li><a href="布局.html?tab=1">APP客户端</a></li>
+                    <li><a href="布局.html?tab=2">精彩内容</a></li>
+                    <li><a href="布局.html?tab=3">PDF阅读</a></li>
+                    <li data-type="about">关于我们</li>
                 </ul>
             </div>
         </div>
-        
-        <div class="about_text">
-            <h3>关于我们</h3>
-            <div>
-                <p>一个有创意， 更有爱的团队，</p>
-                <p>希望把小小的亲子互动做成一个伟大的互联网产品，</p>
-                <p>我们创造、开发全球首款远距离亲子陪伴工具；</p>
-                <p>首创丰富的互动内容，致力于家庭亲子陪伴新时代。 </p>
-                <p>让成人和幼儿之间，父母和宝贝之间</p>
-                <p>有一段浓浓亲情陪伴的在线时光。</p>
-            </div>
-        </div>
 
-        <div class="mod_footer">
-            <div>
-                <a href="">关于我们</a>
-                <a href="">用户反馈</a>
+        <div id="js_tbody" class="js_mod mod_tbody">
+            <!--关于我们-->
+            <div id="js_about" class="mod_about">
+                <div class="mod_wrapper">
+                    <div class="t_text">
+                        <h3>关于我们</h3>
+                        <div>
+                            <p>一个有创意， 更有爱的团队，</p>
+                            <p>希望把小小的亲子互动做成一个伟大的互联网产品，</p>
+                            <p>我们创造、开发全球首款远距离亲子陪伴工具；</p>
+                            <p>首创丰富的互动内容，致力于家庭亲子陪伴新时代。 </p>
+                            <p>让成人和幼儿之间，父母和宝贝之间</p>
+                            <p>有一段浓浓亲情陪伴的在线时光。</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p>联系方式: ***@ <img src="themes/images/icon_mail.png" /></p>
         </div>
+    </div>
+
+    <div class="js_footer mod_footer">
+        <div>
+            <a href="关于我们.html">关于我们</a>
+            <a href="用户反馈.html">用户反馈</a>
+        </div>
+        <p>联系方式: ***@ <img src="themes/images/icon_mail.png" /></p>
     </div>
 
     <script type="text/javascript" src="themes/js/jquery.min-1.8.2.js"></script>

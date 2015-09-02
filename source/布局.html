@@ -15,18 +15,26 @@
             <div class="js_menu t_menu">
                 <div><img src="themes/images/icon_menu.png" /></div>
                 <ul>
-                    <li><a href="">微视频</a></li>
-                    <li><a href="">APP客户端</a></li>
-                    <li><a href="">精彩内容</a></li>
-                    <li><a href="">PDF阅读</a></li>
-                    <li><a href="">关于我们</a></li>
+                    <li data-type="video">微视频</li>
+                    <li data-type="app">APP客户端</li>
+                    <li data-type="detail">精彩内容</li>
+                    <li data-type="pdf">PDF阅读</li>
+                    <li data-type="about">关于我们</li>
                 </ul>
             </div>
         </div>
 
         <div id="js_tbody" class="mod_tbody">
+
+            <ul id="js_icon" class="mod_icon">
+                <li class="current"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
             <!--微视频-->
-            <div id="js_video" class="mod_video">
+            <div id="js_video" class="js_mod mod_video">
                 <div class="mod_wrapper">
                     <div class="video_text">
                         <h3>因为需要，所以彼此陪伴</h3>
@@ -40,7 +48,7 @@
             </div>
             
             <!--APP客户端-->
-            <div id="js_app" class="mod_app">
+            <div id="js_app" class="js_mod mod_app">
                 <div class="mod_wrapper">
                     <div class="t_text">
                         <h3>亲陪让你和孩子牵手</h3>
@@ -67,7 +75,7 @@
             </div>
 
             <!--精彩内容-->
-            <div id="js_detail" class="mod_detail">
+            <div id="js_detail" class="js_mod mod_detail">
                 <div class="mod_wrapper">
                     <div class="t_text">
                         因为有爱，亲陪知道如何与你一起陪伴你的宝贝！<br>
@@ -76,54 +84,92 @@
                     <div class="js_slide t_slide">
                         <ul>
                             <li>
-                                <p>
-                                    我讲你听，有声有图<br>
-                                    讲故事也可以这样有特色
-                                </p>
-                                <img src="themes/images/detail_01.png" />
+                                <div>
+                                    <p>
+                                        我讲你听，有声有图<br>
+                                        讲故事也可以这样有特色
+                                    </p>
+                                    <img src="themes/images/detail_01.png" />
+                                </div>
                             </li>
                             <li>
-                                <p>
-                                    我扮演她，你扮演他<br>
-                                    与宝贝一起进入童话梦想世界
-                                </p>
-                                <img src="themes/images/detail_02.png" />
+                                <div>
+                                    <p>
+                                        我扮演她，你扮演他<br>
+                                        与宝贝一起进入童话梦想世界
+                                    </p>
+                                    <img src="themes/images/detail_02.png" />
+                                </div>
                             </li>
                             <li>
-                                <p>
-                                    类别游戏，有趣接龙<br>
-                                    让你根本跟不上宝贝的小脑袋
-                                </p>
-                                <img src="themes/images/detail_03.png" />
+                                <div>
+                                    <p>
+                                        类别游戏，有趣接龙<br>
+                                        让你根本跟不上宝贝的小脑袋
+                                    </p>
+                                    <img src="themes/images/detail_03.png" />
+                                </div>
                             </li>
                             <li>
-                                <p>
-                                    有画有空间，别样互动<br>
-                                    让你和孩子在想象中漂流
-                                </p>
-                                <img src="themes/images/detail_04.png" />
+                                <div>
+                                    <p>
+                                        有画有空间，别样互动<br>
+                                        让你和孩子在想象中漂流
+                                    </p>
+                                    <img src="themes/images/detail_04.png" />
+                                </div>
                             </li>
                         </ul>
-                        <div class="t_pointer">
-                            <p></p>
-                            <p></p>
-                            <p class="current"></p>
-                            <p></p>
-                        </div>
+                    </div>
+
+                    <div class="t_pointer">
+                        <p></p>
+                        <p></p>
+                        <p class="current"></p>
+                        <p></p>
                     </div>
                 </div>
             </div>
 
 
             <!--PDF阅读-->
-            <div id="js_pdf" class="mod_pdf">
+            <div id="js_pdf" class="js_mod mod_pdf">
                 <div class="mod_wrapper">
+                    <div class="t_text">
+                        <h2>面对面的有趣互动</h2>
+                        <h3>精心创作电子阅读格式</h3>
+                        <p>下载或打印后，父母和宝宝可选择不同的角色精彩扮演，并配合亲陪APP（提供各种角色的音频和特效），就可以和宝贝进入面对面的童话世界；一起来开启梦想世界吧！</p>
+                        <div>
+                            <a href=""><img src="themes/images/down.png" />白雪公主<i>[PDF]</i></a>
+                            <a href=""><img src="themes/images/down.png" />白雪公主<i>[PDF]</i></a>
+                        </div>
+                    </div>
+
+                    <div class="t_img">
+                        <img src="themes/images/pdf_img.png" />
+                        <div>
+                            <a href=""><img src="themes/images/down.png" />白雪公主<i>[PDF]</i></a>
+                            <a href=""><img src="themes/images/down.png" />白雪公主<i>[PDF]</i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="js_footer mod_footer">
+        <div>
+            <a href="关于我们.html">关于我们</a>
+            <a href="用户反馈.html">用户反馈</a>
+        </div>
+        <p>联系方式: ***@ <img src="themes/images/icon_mail.png" /></p>
+    </div>
+
     <script type="text/javascript" src="themes/js/jquery.min-1.8.2.js"></script>
+    <script type="text/javascript" src="themes/js/jquery-mousewheel.js"></script>
     <script type="text/javascript" src="themes/js/page.js"></script>
+    <script type="text/javascript">
+        fn.init();
+    </script>
 </body>
 </html>

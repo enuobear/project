@@ -1,4 +1,4 @@
-(function(){
+(function(window){
     var unit = {
         isApp: function () {
             var ua = navigator.userAgent,
@@ -20,7 +20,22 @@
                 x: $(document.body).width(),
                 y: $(document.body).height()
             };
-        }
+        },
+
+        getRequest: function () { 
+            var url = location.search,
+                obj = {}; 
+
+            if (url.indexOf("?") != -1) { 
+                var str = url.substr(1); 
+                strs = str.split("&"); 
+                for(var i = 0; i < strs.length; i++) { 
+                    obj[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]); 
+                } 
+            } 
+
+            return obj; 
+        } 
     };
 
     /**
@@ -32,21 +47,76 @@
         $app         = $("#js_app"),
         $detail      = $("#js_detail"),
         $pdf         = $("#js_pdf"),
+        $about       = $("#js_about"),
+        $msg         = $("#js_msg"),
+        $icon        = $("#js_icon"),
         $mod_wrapper = $(".mod_wrapper");
 
+    var current = 0;
+
+    console.log(unit.getRequest());
 
     var fn = {
+        init: function () {
+            var self = this;
+
+
+            var params = unit.getRequest();
+
+            if (params.tab) {
+                current = params.tab;
+            }
+
+            if (!unit.isApp()) {
+                self.animate();
+
+                $("#js_view").on('mousewheel', function(e) {
+                    // console.log(e.deltaX, e.deltaY, e.deltaFactor);
+                    if ((e.deltaY > 2) && (current < 3) && !$tbody.is(":animated")) {
+                        current++;
+                        self.animate();
+                    }
+
+                    if ((e.deltaY < -2) && (current > 0) && !$tbody.is(":animated")) {
+                        current--;
+                        self.animate();
+                    }
+                });
+            } else {
+                var type = "video";
+
+                switch (current) {
+                    case "1":
+                        type = "app";
+                    break;
+                    
+                    case "2":
+                        type = "detail";
+                    break;
+                    
+                    case "3":
+                        type = "pdf";
+                    break;
+                }
+
+                $("#js_"+ type).show();
+            }
+        },
+
         /**
          * 初始化页面中的view表现
          * 需要判断环境
          */
         setView: function () {
             var self = this;
-
+            
             self.toggleMenu();
 
             if (!unit.isApp()) {
                 $("body").addClass("view_web");
+                self.clickScroll();
+
+                self._footer();
                 self.setWeb();
             } else {
                 $("body").addClass("view_app");
@@ -62,6 +132,43 @@
                 } else {
                     $that.addClass("show");
                 }
+            });
+        },
+
+        clickScroll: function () {
+            var self = this;
+
+            $(".js_menu li").on("click", function () {
+                var index = $(this).index();
+
+                if (index == 4) {
+                    $(".mod_footer").show();
+                } else {
+                    current = index;
+                    $(".mod_footer").hide();
+                    self.animate();
+                }
+            });
+        },
+
+        animate: function () {
+            $("#js_icon li").removeClass("current");
+
+            $tbody.animate({
+                top: -unit.getScreen().y*current + "px"
+            });
+            $("#js_icon li").eq(current).addClass("current");
+        },
+
+        _footer: function () {
+            var self = this;
+
+            $(".js_footer li").on("click", function () {
+                var type = $(this).attr("data-type");
+
+                $(".js_footer").hide();
+                // $(".js_mod").hide();
+                $("#js_"+type).show();
             });
         },
 
@@ -90,15 +197,26 @@
                 "width": $screen.x + "px",
                 "height": $screen.y + "px"
             });
+            $about.css({
+                "width": $screen.x + "px",
+                "height": $screen.y + "px"
+            });
+            $msg.css({
+                "width": $screen.x + "px",
+                "height": $screen.y + "px"
+            });
 
             $tbody.css({
-                "height": $screen.y*4 + "px",
-                "top": -$screen.y*3 +"px"
+                "height": $screen.y*4 + "px"
             });
 
             $mod_wrapper.css({
                 "height": ($screen.y-90)+"px"
             });
+
+            $icon.css({
+                "right": ($screen.x-980)/2 + "px"
+            })
 
             self.setDetail();
         },
@@ -129,7 +247,38 @@
         },
 
         setApp: function () {
+            var self = this;
 
+            self._appMenu();
+
+            self._appImages();
+        },
+
+        _appShow: function () {
+
+        },
+
+        _appMenu: function () {
+            $(".js_menu li").on("click", function () {
+                var type = $(this).data("type");
+
+                if (type == "about") {
+                    $(".js_footer").show();
+                } else {
+                    $(".js_footer").hide();
+                    $(".js_mod").hide();
+                    $("#js_"+type).show();
+                }
+            });
+        },
+
+        _appImages: function () {
+            $(".js_slide ul li").css({
+                "width": unit.getScreen().x + "px"
+            });
+            $(".js_slide ul").css({
+                "display": "-webkit-box"
+            });
         }
     };
 
@@ -137,23 +286,23 @@
     fn.setView();
 
 
+    window.fn = fn;
+})(window);
 
-})();
 
 
+// $(window).on('scroll', function () {
+//     var $that = $('.top_tab'),
+//         top = $that.offset().top,
+//         stop = $('body').scrollTop();
 
-$(window).on('scroll', function () {
-    var $that = $('.top_tab'),
-        top = $that.offset().top,
-        stop = $('body').scrollTop();
-
-    if ((top - stop) <= 60) {
-        $that.addClass("t_fixed");
-    } else {
-        $that.removeClass("t_fixed");
-    }
-    console.log(top - stop);
-});
+//     if ((top - stop) <= 60) {
+//         $that.addClass("t_fixed");
+//     } else {
+//         $that.removeClass("t_fixed");
+//     }
+//     console.log(top - stop);
+// });
 
 
 // (function() {

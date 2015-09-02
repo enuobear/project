@@ -1,1 +1,490 @@
-﻿
+﻿.view_app {
+
+    .mod_header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 100;
+
+        width: 100%;
+        height: 50px;
+
+        @include box();
+        @include box-pack();
+        
+        .t_logo {
+            padding: 10px;
+            width: 30px;
+            text-align: center;
+            line-height: 20px;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        .t_menu {
+            width: 50px;
+            height: 50px;
+
+            div {
+                width: 30px;
+                height: 35px;
+                margin: 0 auto;
+                padding-top: 10px;
+                img {
+                    width: 100%;
+                }
+            }
+            ul {
+                position: absolute;
+                right: 10px;
+                top: 44px;
+
+                background: rgba(0, 0, 0, 0.8);
+                width: 100px;
+
+                display: none;
+
+                @include border-radius(5px);
+
+                &.show {
+                    display: block;
+                }
+
+                &:before {
+                    content: "";
+
+                    position: absolute;
+                    top: -10px;
+                    right: 10px;
+
+                    width: 0;
+                    height: 0;
+                    overflow: hidden;
+                    display: block;
+
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+                }
+                // display: none;
+                li {
+                    line-height: 40px;
+                    color: #fff;
+                    text-indent: 10px;
+                    border-bottom: 1px solid #666;
+                    &:last-child {
+                        border: 0;
+                    }
+                    a {
+                        display: block;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .mod_footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: 100;
+
+        width: 100%;
+        height: 60px;
+        background: #000;
+        display: none;
+
+        div {
+            text-align: center;
+            line-height: 30px;
+            a {
+                color: #fff;
+                display: inline-block;
+                margin: 0 10px;
+            }
+        }
+        p {
+            font-size: 12px;
+            text-align: center;
+            img {
+                width: 20px;
+            }
+        }
+    }
+
+
+    .mod_body {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+        display: block;
+    }
+
+    .mod_video,
+    .mod_app,
+    .mod_detail,
+    .mod_pdf,
+    .mod_about,
+    .mod_msg {
+        display: none;
+    }
+
+    .mod_wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+
+        height: 100%;
+        width: 100%;
+
+        // @include box();
+    }
+
+    .mod_video {
+        // display: block;
+
+        .mod_wrapper {
+            background: url(images/bg_app_video.jpg) no-repeat 0 bottom fixed #82b6db;
+            background-size: 100% auto;
+
+            .video_text {
+                padding-top: 70px;
+
+                text-align: center;
+                h3 {
+                    font-size: 16px;
+                    line-height: 50px;
+                }
+                div {
+                    padding: 10px 0;
+                    line-height: 20px;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .video_play {
+                @include box-flex();
+                text-align: center;
+
+                img {
+                    width: 90%;
+                }
+            }
+        }
+    }
+
+    .mod_app {
+        .mod_wrapper {
+            background: url(images/bg_app_app.jpg) no-repeat 0 bottom fixed #6abce2;
+            background-size: 100% auto;
+
+            @include box();
+            @include box-orient();
+
+            .t_text {
+                padding-top: 70px;
+                text-align: center;
+                h3 {
+                    line-height: 30px;
+                }
+                div {
+                    line-height: 20px;
+                    font-size: 12px;
+                }
+            }
+
+            .t_link {
+                height: 100px;
+                padding: 10px;
+                @include box();
+                @include box-align();
+                @include box-pack($type: center);
+                p {
+                    width: 100px;
+                    height: 100px;
+                    margin-right: 10px;
+                    img {
+                        width: 100%;
+                    }
+                }
+                div {
+                    width: 100px;
+                    margin-left: 10px;
+                    a {
+                        display: block;
+                        width: 130px;
+                        &:nth-child(1) {
+                            margin-bottom: 10px;
+                        }
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            .t_img {
+                position: relative;
+                @include box-flex();
+                div {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+
+                    img {
+                        height: 100%;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .mod_detail {
+
+        .mod_wrapper {
+            background: url(images/bg_app_detail.jpg) no-repeat 0 bottom fixed #3fa1ea;
+            background-size: 100% auto;
+
+            @include box();
+            @include box-orient();
+
+            .t_text {
+                padding-top: 70px;
+                text-align: center;
+                line-height: 20px;
+            }
+
+            .t_slide {
+                position: relative;
+                @include box-flex();
+
+                ul {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    
+                    height: 100%;
+                    
+                    @include box();
+
+                    li {
+                        width: 0;
+                        text-align: center;
+                        display: block;
+                        position: relative;
+
+                        @include box-flex();
+
+                        div {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+
+                            @include box-y();
+
+                            p {
+                                padding-top: 20px;
+                                display: block;
+                                line-height: 16px;
+                                margin-bottom: 10px;
+                                font-size: 12px;
+                            }
+                            img {
+                                height: 100%;
+                                @include box-flex();
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            .t_pointer {
+                position: absolute;
+                left: 0;
+                bottom: 10px;
+                z-index: 101;
+
+                text-align: center;
+
+                width: 100%;
+                font-size: 0;
+
+                p {
+                    width: 10px;
+                    height: 10px;
+                    display: inline-block;
+                    margin: 0 5px;
+
+                    @include border-radius(10px);
+                    // @include box-shadow();
+
+                    background: rgba(0, 0, 0, 0.6);
+                    &.current {
+                        background: rgba(255, 255, 255, 0.9);
+                    }
+                }
+            }
+        }
+    }
+
+
+    .mod_pdf {
+        .mod_wrapper {
+            background: url(images/bg_app_other.jpg) no-repeat 0 bottom fixed #7a89a8;
+            background-size: 100% auto;
+
+            @include box();
+            @include box-orient();
+
+            .t_text {
+                display: block;
+                padding-top: 70px;
+                text-align: center;
+                margin-bottom: 10px;
+
+                h2 {
+                    font-size: 16px;
+                    line-height: 20px;
+                }
+                h3 {
+                    font-size: 14px;
+                    line-height: 30px;
+                }
+                p {
+                    font-size: 12px;
+                    line-height: 16px;
+                }
+                div {
+                    display: none;
+                }
+            }
+
+            .t_img {
+                @include box-flex();
+                text-align: center;
+
+                @include box();
+                @include box-orient();
+                img {
+                    width: 230px;
+                    margin: 0 auto;
+                }
+                div {
+                    text-align: left;
+                    a {
+                        display: block;
+                        line-height: 30px;
+                        padding-left: 10px;
+                        img {
+                            width: 25px;
+                            margin-right: 5px;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+
+
+    .mod_about {
+        display: block;
+
+        .mod_wrapper {
+            background: url(images/bg_app_other.jpg) no-repeat 0 bottom fixed #7a89a8;
+            background-size: 100% auto;
+
+            @include box();
+            @include box-orient();
+
+            .t_text {
+                text-align: center;
+                color: #000;
+                padding-top: 70px;
+                h3 {
+                    font-size: 18px;
+                    line-height: 50px;
+                }
+                div {
+                    p {
+                        font-size: 12px;
+                        padding: 5px 10px;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .mod_msg {
+        display: block;
+
+        .mod_wrapper {
+            background: url(images/bg_app_other.jpg) no-repeat 0 bottom fixed #7a89a8;
+            background-size: 100% auto;
+
+            @include box();
+            @include box-orient();
+
+            .t_text {
+                padding: 70px 10px 10px;
+                line-height: 25px;
+                text-align: center;
+            }
+
+            .t_textarea {
+                padding: 10px;
+                div {
+                    border: 1px solid #f8f8f8;
+                    padding: 10px;
+                    background: rgba(0,0,0,0.1);
+                    @include border-radius(5px);
+                    textarea {
+                        border: 0;
+                        height: 100px;
+                        width: 100%;
+                        background: none;
+                        outline: none;
+                        color: #fff;
+                        -webkit-box-sizing: border-box;
+                    }
+                }
+                p {
+                    line-height: 30px;
+                    font-size: 12px;
+                    color: #000;
+                }
+            }
+
+            .t_btn {
+                width: 120px;
+                line-height: 40px;
+                height: 40px;
+                text-align: center;
+                margin: 0 auto;
+                color: #fff;
+                background: #fd8c40;
+                @include border-radius(5px);
+            }
+        }
+    }
+}
