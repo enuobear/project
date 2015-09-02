@@ -54,8 +54,6 @@
 
     var current = 0;
 
-    console.log(unit.getRequest());
-
     var fn = {
         init: function () {
             var self = this;
@@ -275,21 +273,6 @@
             $(".js_slide ul").css({
                 "display": "-webkit-box"
             });
-
-            
-
-            var myScroll = new IScroll('.js_slide', {
-                scrollX: true,
-                scrollY: false,
-                momentum: false,
-                snap: true,
-                snapSpeed: 400,
-                keyBindings: true,
-                indicators: {
-                    el: document.getElementById('t_pointer'),
-                    resize: false
-                }
-            });
         }
     };
 
@@ -298,9 +281,11 @@
 
 
     window.fn = fn;
+
+    
+
+
 })(window);
-
-
 
 // $(window).on('scroll', function () {
 //     var $that = $('.top_tab'),
