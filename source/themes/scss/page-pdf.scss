@@ -1,46 +1,121 @@
-﻿.pdf_detail {
-    padding-top: 80px;
-    .t_text {
-        h2, h3 {
-            text-align: center;
-            @include text-shadow();
-        }
-        h2 {
-            font-size: 18px;
-        }
-        h3 {
-            font-size: 16px;
-            line-height: 40px;
-        }
-        div {
+﻿@media only screen and (min-width: 760px) {
+    .mod_pdf {
+        @include page($name: other, $clapp: #7a89a8, $clweb: #686ea0);
+
+        .pdf_detail {
+            @include box-flex();
+            @include box();
+            @include box-align();
+
             padding: 0 20px;
-            p {
-                line-height: 20px;
-                font-size: 12px;
-                color: #000;
+
+            .t_wrapper {
+                @include box-flex();
+                .t_text {
+                    margin-bottom: 20px;
+                    h2, h3 {
+                        text-align: center;
+                        @include text-shadow();
+                    }
+                    h2 {
+                        font-size: 18px;
+                        line-height: 40px;
+                    }
+                    h3 {
+                        font-size: 16px;
+                        line-height: 60px;
+                    }
+                    div {
+                        padding: 0 20px;
+                        p {
+                            line-height: 30px;
+                            font-size: 12px;
+                            color: #000;
+                        }
+                    }
+                }
+
+
+                ul {
+                    li {
+                        display: block;
+                        padding: 0 20px;
+                        line-height: 30px;
+                        img {
+                            width: 20px;
+                        }
+                        i {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            .t_img {
+                width: 500px;
+                img {
+                    width: 100%;
+                    display: block;
+                }
             }
         }
     }
+}
 
-    .t_img {
-        max-width: 300px;
-        margin: 0 auto;
-        img {
-            width: 100%;
-            display: block;
-        }
-    }
+@media only screen and (max-width: 760px) {
+    .mod_pdf {
+        @include page($name: other, $clapp: #7a89a8, $clweb: #686ea0);
 
-    ul {
-        li {
-            display: block;
-            padding: 0 20px;
-            line-height: 30px;
-            img {
-                width: 20px;
+
+        .pdf_detail {
+            @include box-flex();
+            
+            .t_text {
+                h2, h3 {
+                    text-align: center;
+                    @include text-shadow();
+                }
+                h2 {
+                    font-size: 18px;
+                }
+                h3 {
+                    font-size: 16px;
+                    line-height: 40px;
+                }
+                div {
+                    padding: 0 10px;
+                    p {
+                        line-height: 20px;
+                        font-size: 12px;
+                        color: #000;
+                    }
+                }
             }
-            i {
-                font-size: 12px;
+
+            .t_img {
+                width: 100%;
+                margin: 0 auto;
+                @include box();
+                img {
+                    width: 100px;
+                    display: block;
+                    margin-left: 10px;
+                }
+                div {
+                    @include box-flex();
+                    display: block;
+                    line-height: 30px;
+                    a {
+                        display: block;
+                        img {
+                            width: 20px;
+                            display: inline-block;
+                        }
+                        i {
+                            font-size: 12px;
+                        }
+                    }
+                }
             }
         }
     }

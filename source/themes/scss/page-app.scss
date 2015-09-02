@@ -1,54 +1,148 @@
-﻿.mod_app {
-    @include page($name: app, $clapp: #6abce2, $clweb: #6bbde3);
+﻿@media only screen and (min-width: 760px) {
+	.mod_app {
+	    @include page($name: app, $clapp: #6abce2, $clweb: #6bbde3);
 
-    .app_detail {
-        padding: 0 20px;
-        .t_text {
-            width: 100%;
-            margin-bottom: 10px;
-            @include text-shadow();
 
-            h3 {
-                font-size: 18px;
-                line-height: 20px;
-                text-align: center;
-                margin-bottom: 10px;
-            }
-            div {
-                font-size: 12px;
-                line-height: 20px;
-            }
-        }
+	    .app_detail {
+	    	@include box-flex();
+	    	@include box();
+	    	@include box-direction();
+	    	// @include box-align();
+	    	.t_wrapper {
+	    		@include box-flex();
+		    	.t_text {
+		    		h3 {
+		    			line-height: 50px;
+		    		}
+		    		div {
+		    			line-height: 30px;
+		    		}
+		    		margin-bottom: 20px;
+		    	}
 
-        .t_link {
-            padding: 0 20px;
-            margin-bottom: 10px;
-            display: -webkit-box;
-            -webkit-box-pack: justify;
-            p {
-                width: 100px;
-                img {
-                    width: 100%;
-                }
-            }
-            div {
-                width: 120px;
-                a {
-                    display: block;
-                    &:nth-child(1) {
-                        margin-bottom: 10px;
-                    }
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
-        }
-    }
+		    	.t_link {
+		    		p {
+		    			width: 150px;
+		    			height: 150px;
+		    			float: left;
+		    			margin-right: 10px;
+		    			img {
+		    				width: 100%;
+		    			}
+		    		}
+		    		div {
+		    			float: left;
+		    			a {
+		    				display: block;
+		    				width: 150px;
+		    				margin-bottom: 10px;
+		    				img {
+		    					width: 100%;
+		    				}
+		    			}
+		    		}
+		    	}
+		    }
 
-    .app_img {
-        -webkit-box-flex: 1;
-        height: 100%;
-        display: block;
-    }
+		    .t_img {
+		    	display: block;
+		    	width: 40%;
+		    	margin-right: 20px;
+		    	padding-left: 20px;
+
+		    	position: relative;
+		    	div {
+		    		position: absolute;
+		    		left: 0;
+		    		top: 0;
+
+		    		width: 100%;
+		    		height: 100%;
+			    	img {
+			    		position: absolute;
+			    		left: 20px;
+			    		bottom: 0;
+
+			    		width: 400px;
+			    	}
+		    	}
+		    }
+	    }
+	}
+}
+
+@media only screen and (max-width: 760px) {
+	.mod_app {
+	    @include page($name: app, $clapp: #6abce2, $clweb: #6bbde3);
+
+	    .app_detail {
+	        padding: 0 20px;
+			@include box-flex();
+	    	@include box-y();
+
+	    	.t_wrapper {
+	    		display: block;
+		        .t_text {
+		            width: 100%;
+		            margin-bottom: 10px;
+		            @include text-shadow();
+
+		            h3 {
+		                font-size: 18px;
+		                line-height: 20px;
+		                text-align: center;
+		                margin-bottom: 10px;
+		            }
+		            div {
+		                font-size: 12px;
+		                line-height: 20px;
+		            }
+		        }
+
+		        .t_link {
+		            padding: 0 20px;
+		            margin-bottom: 10px;
+					@include box();
+					@include box-pack();
+		            p {
+		                width: 100px;
+		                img {
+		                    width: 100%;
+		                }
+		            }
+		            div {
+		                width: 120px;
+		                a {
+		                    display: block;
+		                    &:nth-child(1) {
+		                        margin-bottom: 10px;
+		                    }
+		                    img {
+		                        width: 100%;
+		                    }
+		                }
+		            }
+		        }
+	    	}
+
+	        .t_img {
+	        	@include box-flex();
+	        	text-align: center;
+	        	position: relative;
+	        	div {
+	        		position: absolute;
+	        		left: 0;
+	        		top: 0;
+	        		width: 100%;
+	        		height: 100%;
+		        	img {
+		        		width: auto;
+		        		height: 100%;
+		        		display: block;
+		        		margin: 0 auto;
+		        	}
+	        	}
+	        }
+	    }
+	}
 }

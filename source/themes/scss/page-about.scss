@@ -1,9 +1,10 @@
 ﻿.mod_about {
-    @include page($name: other, $clapp: #7a89a8, $clweb: #717fa2);
+    @include page($name: other, $clapp: #7a89a8, $clweb: #686ea0);
 
     .about_text {
         color: #000;
-        -webkit-box-flex: 1;
+		@include box-flex();
+
         h3 {
             line-height: 40px;
             text-align: center;
