@@ -314,30 +314,38 @@
             }
 
 
-            .t_pointer {
+            .t_pointer,
+            .t_pointer_bg {
                 position: absolute;
-                left: 0;
+                left: 50%;
                 bottom: 10px;
                 z-index: 101;
 
                 text-align: center;
 
-                width: 100%;
+                width: 60px;
                 font-size: 0;
-
+                margin-left: -25px;
+                
                 p {
                     width: 10px;
                     height: 10px;
-                    display: inline-block;
-                    margin: 0 5px;
 
                     @include border-radius(10px);
-                    // @include box-shadow();
+                }
 
-                    background: rgba(0, 0, 0, 0.6);
-                    &.current {
-                        background: rgba(255, 255, 255, 0.9);
+                &.t_pointer_bg {
+                    @include box();
+                    @include box-pack();
+                    p{
+                        display: block;
+                        background: rgba(0, 0, 0, 0.6);
                     }
+                }
+
+                &.t_pointer p {
+                    display: inline-block;
+                    background: rgba(255, 255, 255, 0.9);
                 }
             }
         }

@@ -254,10 +254,6 @@
             self._appImages();
         },
 
-        _appShow: function () {
-
-        },
-
         _appMenu: function () {
             $(".js_menu li").on("click", function () {
                 var type = $(this).data("type");
@@ -278,6 +274,21 @@
             });
             $(".js_slide ul").css({
                 "display": "-webkit-box"
+            });
+
+            
+
+            var myScroll = new IScroll('.js_slide', {
+                scrollX: true,
+                scrollY: false,
+                momentum: false,
+                snap: true,
+                snapSpeed: 400,
+                keyBindings: true,
+                indicators: {
+                    el: document.getElementById('t_pointer'),
+                    resize: false
+                }
             });
         }
     };
