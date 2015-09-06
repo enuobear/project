@@ -8,30 +8,31 @@
     <link rel="stylesheet" href="themes/all.css" type="text/css" />
 </head>
 <body class="">
-    <div id="js_view" class="mod_body">
-        <div class="mod_header">
-            <div class="t_logo"><img src="themes/images/logo.png" />亲陪</div>
+    <div class="mod_header">
+        <div class="t_logo"><img src="themes/images/logo.png" />亲陪</div>
 
-            <div class="js_menu t_menu">
-                <div><img src="themes/images/icon_menu.png" /></div>
-                <ul>
-                    <li data-type="video">微视频</li>
-                    <li data-type="app">APP客户端</li>
-                    <li data-type="detail">精彩内容</li>
-                    <li data-type="pdf">PDF阅读</li>
-                    <li data-type="about"><a href="关于我们.html">关于我们</a></li>
-                </ul>
-            </div>
+        <div class="js_menu t_menu">
+            <div><img src="themes/images/icon_menu.png" /></div>
+            <ul>
+                <li data-type="video">微视频</li>
+                <li data-type="app">APP客户端</li>
+                <li data-type="detail">精彩内容</li>
+                <li data-type="pdf">PDF阅读</li>
+                <li data-type="about"><a href="关于我们.html">关于我们</a></li>
+            </ul>
         </div>
+    </div>
+
+    <ul id="js_icon" class="mod_icon">
+        <li class="current"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <div id="js_view" class="mod_body">
 
         <div id="js_tbody" class="mod_tbody">
-
-            <ul id="js_icon" class="mod_icon">
-                <li class="current"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
 
             <!--微视频-->
             <div id="js_video" class="js_mod mod_video">
@@ -122,13 +123,16 @@
                         </ul>
                     </div>
 
-                    <ul class="t_pointer_bg">
+<!--                     <ul class="t_pointer_bg">
                         <p></p>
                         <p></p>
                         <p></p>
                         <p></p>
-                    </ul>
+                    </ul> -->
                     <div id="t_pointer" class="t_pointer">
+                        <p class="current"></p>
+                        <p></p>
+                        <p></p>
                         <p></p>
                     </div>
                 </div>
@@ -174,21 +178,6 @@
     <script type="text/javascript" src="themes/js/page.js"></script>
     <script type="text/javascript">
         fn.init();
-
-        
-        // var myScroll = new IScroll('.js_slide', {
-        //     scrollX: true,
-        //     scrollY: false,
-        //     momentum: false,
-        //     snap: true,
-        //     snapSpeed: 400,
-        //     keyBindings: true,
-        //     indicators: {
-        //         el: document.getElementById('t_pointer'),
-        //         resize: false
-        //     }
-        // });
-
     </script>
 </body>
 </html>

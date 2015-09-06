@@ -1,4 +1,10 @@
-(function(window){
+(function(window, document) {
+    var document = window.document,
+        support = {
+            transform3d: ("WebKitCSSMatrix" in window && "m11" in new WebKitCSSMatrix()),
+            touch: ("ontouchstart" in window)
+        };
+
     var myScroll;
 
     var unit = {
@@ -37,7 +43,50 @@
             } 
 
             return obj; 
-        } 
+        },
+
+        addEvent: function (el, type, fn) {
+            el.addEventListener(type, fn, false);
+        },
+
+        removeEvent: function (el, type, fn) {
+            el.removeEventListener(type, fn, false);
+        },
+
+        getPage: function (event, page) {
+            return event.changedTouches[0][page];
+        },
+
+        getTranslate: function (x, y) {
+            var distX = x,
+                distY = y;
+
+            return support.transform3d ? "translate3d(" + distX + "px, " + distY + "px, 0)" : "translate(" + distX + "px, " + distY + "px)";
+        },
+
+        eventStop: function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        },
+
+        getTriangleSide: function(x1, y1, x2, y2) {
+            var x = Math.abs(x1 - x2),
+                y = Math.abs(y1 - y2),
+                z = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+
+            return {
+                x: x,
+                y: y,
+                z: z
+            };
+        },
+
+        getAngle: function (triangle) {
+            var cos = triangle.y / triangle.z,
+                radina = Math.acos(cos);
+
+            return 180 / (Math.PI / radina);
+        }
     };
 
     /**
@@ -56,6 +105,258 @@
 
     var current = 0;
 
+
+    var app = {
+        init: function () {
+            var self = this;
+
+            self.wrapper = document.querySelector("#js_view");
+            self.newX = 0;
+            self.newY = 0;
+            self.img = 0;
+            self.type = "y"; // y：直线移动，x：横向移动
+
+            self._initEvents();
+        },
+
+        _start: function (e) {
+            var self = this;
+
+            self.basePageX = unit.getPage(e, "pageX");
+            self.basePageY = unit.getPage(e, "pageY");
+
+            self.scrolling = true;
+            self.moveReady = false;
+        },
+
+        _move: function (e) {
+            var self = this;
+
+            if (!self.scrolling) {
+                return;
+            }
+
+            var pageX = unit.getPage(e, "pageX"),
+                pageY = unit.getPage(e, "pageY"),
+                distX,
+                distY,
+                moveX = 0,
+                moveY = 0;
+
+            if (self.moveReady) {
+                unit.eventStop(e);
+
+                distX = pageX - self.basePageX;
+                distY = pageY - self.basePageY;
+
+                self.moveX = distX;
+                self.moveY = distY;
+
+                if (self.type == "x") {
+                    if (self.img > 0 && self.img < 3) {
+                        moveX = distX + self.newX;
+                    } else {
+                        moveX = distX/3 + self.newX;
+                    }
+                    moveY = 0;
+                } else {
+                    moveX = 0;
+                    if (current > 0 && current < 3) {
+                        moveY = distY + self.newY;
+                    } else {
+                        moveY = distY/3 + self.newY;
+                    }
+                }
+
+                self._refresh({
+                    'e': e,
+                    'x': moveX,
+                    'y': moveY,
+                    'timer': '0s',
+                    'type': 'ease'
+                });
+
+
+            } else {
+                var triangle = unit.getTriangleSide(self.basePageX, self.basePageY, pageX, pageY);
+
+                if (current == 2) {
+                    if (self.moveY < -100 || self.moveY > 100) {
+                        self.type = "y";
+                    } else {
+                        self.type = "x";
+                    }
+                     
+                    self.moveReady = true;
+                    // } else {
+                    //     self.scrolling = false;
+                    // }
+
+                } else {
+                    self.type = "y";
+                    if (triangle.z > 5) {
+                        if (unit.getAngle(triangle) < 20) {
+                            self.moveReady = true;
+                        } else {
+                            self.scrolling = false;
+                        }
+                    }
+                }
+            }
+        },
+
+        _end: function (e) {
+            var self = this;
+
+            if (!self.scrolling) return;
+
+            if (self.type == "y") {
+                if (self.moveY < 0) {
+                    if (self.moveY < -80) {
+                        if (current < 3) {
+                            current++;
+                        }
+                    }
+                } else {
+                    if (self.moveY > 80) {
+                        if (current > 0) {
+                            current--;
+                        }
+                    }
+                }
+
+                self._refresh({
+                    'e': e,
+                    'x': 0,
+                    'y': - current * unit.getScreen().y,
+                    'timer': '0.5s',
+                    'type': 'ease-in-out'
+                });
+
+                self.newY = -current * unit.getScreen().y;
+            } else {
+                if (self.moveX < 0) {
+                    if (self.moveX < -80) {
+                        if (self.img < 3) {
+                            self.img++;
+                        }
+                    }
+                } else {
+                    if (self.moveX > 80) {
+                        if (self.img > 0) {
+                            self.img--;
+                        }
+                    }
+                }
+
+                self._refresh({
+                    'e': e,
+                    'x': - self.img * unit.getScreen().x,
+                    'y': 0,
+                    'timer': '0.5s',
+                    'type': 'ease-in-out'
+                });
+
+                self.newX = -self.img * unit.getScreen().x;
+
+                self._changedCurrent();
+            }
+
+            if (current == 3) {
+                self.updatePdf();
+            } else {
+                $(".js_footer").hide();
+            }
+        },
+
+        updatePdf: function () {
+            $(".js_footer").show();
+
+            $("#js_pdf .t_img > img").css({
+                "height": ($("#js_pdf .t_img").height() - 60)+"px"
+            });
+        },
+
+        _refresh: function (params) {
+            var self = this;
+
+            if (self.type == "x") {
+                $(".js_slide").css({
+                    "-webkit-transition": "-webkit-transform "+ params.timer +" "+ params.type,
+                    "-webkit-transform": unit.getTranslate(params.x, 0)
+                });
+            } else {
+                $("#js_tbody").css({
+                    "-webkit-transition": "-webkit-transform "+ params.timer +" "+ params.type,
+                    "-webkit-transform": unit.getTranslate(0, params.y)
+                });
+            }
+        },
+
+        _changedCurrent: function() {
+            var self = this,
+                $that = $("#t_pointer p");
+
+            $that.removeClass("current");
+            $that.eq(self.img).addClass("current");
+        },
+
+        _initEvents: function (remove) {
+            var eventType = remove ? unit.removeEvent : unit.addEvent;
+
+            eventType(this.wrapper, 'touchstart', this);
+            eventType(this.wrapper, 'touchmove', this);
+            eventType(this.wrapper, 'touchend', this);
+        },
+
+        handleEvent: function (e) {
+            var self = this;
+
+            switch (e.type) {
+                case 'touchstart':
+                    self._start(e);
+                break;
+                case 'touchmove':
+                    self._move(e);
+                break;
+                case 'touchend':
+                    self._end(e);
+                break;
+            }
+        },
+
+        _clickMenu: function () {
+            var self = this;
+            $(".js_menu li").off().on("click", function (e) {
+                current = $(this).index();
+
+                self.moveView();
+            });
+        },
+
+        moveView: function () {
+            var self = this;
+
+            $(".js_footer").hide();
+
+            self.newY = -current * unit.getScreen().y;
+
+            self._refresh({
+                'x': 0,
+                'y': - current * unit.getScreen().y,
+                'timer': '0.5s',
+                'type': 'ease-in-out'
+            });
+
+            if (current == 3) {
+                self.updatePdf();
+                $(".js_footer").show();
+            }
+        }
+    };
+
+
+
     var fn = {
         init: function () {
             var self = this;
@@ -64,13 +365,17 @@
             var params = unit.getRequest();
 
             if (params.tab) {
-                current = params.tab;
+                current = parseInt(params.tab, 0) || 0;
+            }
+
+            if (current > 3) {
+                current = 0;
             }
 
             if (!unit.isApp()) {
                 self.animate();
 
-                $("#js_view").on('mousewheel', function(e) {
+                $("#js_view").off().on('mousewheel', function(e) {
                     // console.log(e.deltaX, e.deltaY, e.deltaFactor);
                     if ((e.deltaY > 2) && (current < 3) && !$tbody.is(":animated")) {
                         current++;
@@ -83,23 +388,25 @@
                     }
                 });
             } else {
-                var type = "video";
 
-                switch (current) {
-                    case "1":
-                        type = "app";
-                    break;
-                    
-                    case "2":
-                        type = "detail";
-                    break;
-                    
-                    case "3":
-                        type = "pdf";
-                    break;
-                }
+                app.moveView();
+                // var type = "video";
 
-                self._appMove(type);
+                // switch (current) {
+                //     case "1":
+                //         type = "app";
+                //     break;
+                    
+                //     case "2":
+                //         type = "detail";
+                //     break;
+                    
+                //     case "3":
+                //         type = "pdf";
+                //     break;
+                // }
+
+                // self._appMove(type);
                 // $("#js_"+ type).show();
             }
         },
@@ -122,11 +429,13 @@
             } else {
                 $("body").addClass("view_app");
                 self.setApp();
+
+                app.init();
             }
         },
 
         toggleMenu: function () {
-            $(".js_menu").on("click", function () {
+            $(".js_menu").off().on("click", function () {
                 var $that = $(".js_menu ul");
                 if($that.hasClass("show")) {
                     $that.removeClass("show");
@@ -167,7 +476,7 @@
         _footer: function () {
             var self = this;
 
-            $(".js_footer li").on("click", function () {
+            $(".js_footer li").off().on("click", function () {
                 var type = $(this).attr("data-type");
 
                 $(".js_footer").hide();
@@ -258,26 +567,27 @@
                 "height": unit.getScreen().y + "px"
             });
 
-            self._appMenu();
+            // self._appMenu();
+            app._clickMenu();
 
             self._appImages();
         },
 
         _appMenu: function () {
             var self = this;
-            $(".js_menu li").on("click", function () {
-                var type = $(this).data("type");
-
-                // if (type == "about") {
-                //     $(".js_footer").show();
-                // } else {
-                //     $(".js_footer").hide();
-                //     // $(".js_mod").hide();
-                //     $("#js_"+type).show();
-                // }
+            $(".js_menu li").off().on("click", function (e) {
+                // var type = $(this).data("type");
+                var index = $(this).index();
                 $(".js_footer").hide();
 
-                self._appMove(type);
+                // self._appMove(type);
+                app._refresh({
+                    'e': e,
+                    'x': - self.img * unit.getScreen().x,
+                    'y': 0,
+                    'timer': '0.5s',
+                    'type': 'ease-in-out'
+                });
             });
         },
 
@@ -307,6 +617,7 @@
 
         _appMove: function (type) {
             var self = this;
+
             $tbody.animate({
                 top: -unit.getScreen().y* self._appType(type) + "px"
             });
@@ -320,20 +631,36 @@
             }
 
             if (type == "detail") {
-                myScroll = new IScroll('.js_slide', {
-                    scrollX: true,
-                    scrollY: false,
-                    momentum: false,
-                    snap: true,
-                    snapSpeed: 400,
-                    keyBindings: true,
-                    indicators: {
-                        el: document.getElementById('t_pointer'),
-                        resize: false
-                    }
-                });
+                // myScroll = new IScroll('.js_slide', {
+                //     scrollX: true,
+                //     scrollY: false,
+                //     momentum: false,
+                //     snap: true,
+                //     snapSpeed: 400,
+                //     keyBindings: true,
+                //     indicators: {
+                //         el: document.getElementById('t_pointer'),
+                //         resize: false
+                //     }
+                // });
+                // self._appSlide();
             }
         },
+
+        // _appSlide: function () {
+        //     myScroll = new IScroll('.js_slide', {
+        //         scrollX: true,
+        //         scrollY: false,
+        //         momentum: false,
+        //         snap: true,
+        //         snapSpeed: 400,
+        //         keyBindings: true,
+        //         indicators: {
+        //             el: document.getElementById('t_pointer'),
+        //             resize: false
+        //         }
+        //     });
+        // },
 
         _appImages: function () {
             $(".js_slide ul li").css({
@@ -345,10 +672,9 @@
         }
     };
 
-
     fn.setView();
 
 
     window.fn = fn;
 
-})(window);
+})(window, document);

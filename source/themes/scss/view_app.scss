@@ -160,7 +160,7 @@
         // display: block;
 
         .mod_wrapper {
-            background: url(images/bg_app_video.jpg) no-repeat 0 bottom fixed #82b6db;
+            background: url(images/bg_app_video.jpg) no-repeat 0 bottom #82b6db;
             background-size: 100% auto;
 
             .video_text {
@@ -191,7 +191,7 @@
 
     .mod_app {
         .mod_wrapper {
-            background: url(images/bg_app_app.jpg) no-repeat 0 bottom fixed #6abce2;
+            background: url(images/bg_app_app.jpg) no-repeat 0 bottom #6abce2;
             background-size: 100% auto;
 
             @include box();
@@ -264,7 +264,7 @@
     .mod_detail {
 
         .mod_wrapper {
-            background: url(images/bg_app_detail.jpg) no-repeat 0 bottom fixed #3fa1ea;
+            background: url(images/bg_app_detail.jpg) no-repeat 0 bottom #3fa1ea;
             background-size: 100% auto;
 
             @include box();
@@ -335,6 +335,9 @@
                 width: 60px;
                 font-size: 0;
                 margin-left: -25px;
+                    
+                    @include box();
+                    @include box-pack();
                 
                 p {
                     width: 10px;
@@ -353,8 +356,11 @@
                 }
 
                 &.t_pointer p {
-                    display: inline-block;
-                    background: rgba(255, 255, 255, 0.9);
+                    display: block;
+                    background: rgba(0, 0, 0, 0.6);
+                    &.current {
+                        background: rgba(255, 255, 255, 0.9);
+                    }
                 }
             }
         }
@@ -363,8 +369,10 @@
 
     .mod_pdf {
         .mod_wrapper {
-            background: url(images/bg_app_other.jpg) no-repeat 0 bottom fixed #7a89a8;
+            background: url(images/bg_app_other.jpg) no-repeat 0 bottom #7a89a8;
             background-size: 100% auto;
+
+            overflow: hidden;
 
             @include box();
             @include box-orient();
@@ -432,7 +440,7 @@
         display: block;
 
         .mod_wrapper {
-            background: url(images/bg_app_other.jpg) no-repeat 0 bottom fixed #7a89a8;
+            background: url(images/bg_app_other.jpg) no-repeat 0 bottom #7a89a8;
             background-size: 100% auto;
 
             @include box();
@@ -462,7 +470,7 @@
         display: block;
 
         .mod_wrapper {
-            background: url(images/bg_app_other.jpg) no-repeat 0 bottom fixed #7a89a8;
+            background: url(images/bg_app_other.jpg) no-repeat 0 bottom #7a89a8;
             background-size: 100% auto;
 
             @include box();
