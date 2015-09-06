@@ -126,13 +126,22 @@
         display: block;
     }
 
+    .mod_tbody {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        width: 100%;
+    }
+
     .mod_video,
     .mod_app,
     .mod_detail,
     .mod_pdf,
     .mod_about,
     .mod_msg {
-        display: none;
+        display: block;
+        position: relative;
     }
 
     .mod_wrapper {
@@ -386,14 +395,19 @@
             .t_img {
                 @include box-flex();
                 text-align: center;
+                padding-bottom: 60px;
 
-                @include box();
-                @include box-orient();
+                // @include box();
+                // @include box-orient();
                 img {
-                    width: 230px;
+                    // @include box-flex();
+                    display: block;
+                    // width: 200px;
+                    // width: auto;
                     margin: 0 auto;
                 }
                 div {
+                    height: 60px;
                     text-align: left;
                     a {
                         display: block;
@@ -401,6 +415,7 @@
                         padding-left: 10px;
                         img {
                             width: 25px;
+                            display: inline-block;
                             margin-right: 5px;
                             vertical-align: middle;
                         }

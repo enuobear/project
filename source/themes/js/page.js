@@ -1,4 +1,6 @@
 (function(window){
+    var myScroll;
+
     var unit = {
         isApp: function () {
             var ua = navigator.userAgent,
@@ -97,7 +99,8 @@
                     break;
                 }
 
-                $("#js_"+ type).show();
+                self._appMove(type);
+                // $("#js_"+ type).show();
             }
         },
 
@@ -250,23 +253,86 @@
         setApp: function () {
             var self = this;
 
+            $(".js_mod").css({
+                "width": unit.getScreen().x + "px",
+                "height": unit.getScreen().y + "px"
+            });
+
             self._appMenu();
 
             self._appImages();
         },
 
         _appMenu: function () {
+            var self = this;
             $(".js_menu li").on("click", function () {
                 var type = $(this).data("type");
 
-                if (type == "about") {
-                    $(".js_footer").show();
-                } else {
-                    $(".js_footer").hide();
-                    $(".js_mod").hide();
-                    $("#js_"+type).show();
-                }
+                // if (type == "about") {
+                //     $(".js_footer").show();
+                // } else {
+                //     $(".js_footer").hide();
+                //     // $(".js_mod").hide();
+                //     $("#js_"+type).show();
+                // }
+                $(".js_footer").hide();
+
+                self._appMove(type);
             });
+        },
+
+        _appType: function (type) {
+            var num = 0;
+
+            switch (type) {
+                case "video":
+                    num = 0;
+                break;
+
+                case "app":
+                    num = 1;
+                break;
+
+                case "detail":
+                    num = 2;
+                break;
+
+                case "pdf":
+                    num = 3;
+                break;
+            }
+
+            return num;
+        },
+
+        _appMove: function (type) {
+            var self = this;
+            $tbody.animate({
+                top: -unit.getScreen().y* self._appType(type) + "px"
+            });
+
+            if (type == "pdf") {
+                $(".js_footer").show();
+
+                $("#js_pdf .t_img > img").css({
+                    "height": ($("#js_pdf .t_img").height() - 60)+"px"
+                });
+            }
+
+            if (type == "detail") {
+                myScroll = new IScroll('.js_slide', {
+                    scrollX: true,
+                    scrollY: false,
+                    momentum: false,
+                    snap: true,
+                    snapSpeed: 400,
+                    keyBindings: true,
+                    indicators: {
+                        el: document.getElementById('t_pointer'),
+                        resize: false
+                    }
+                });
+            }
         },
 
         _appImages: function () {
@@ -285,41 +351,4 @@
 
     window.fn = fn;
 
-    
-
-
 })(window);
-
-// $(window).on('scroll', function () {
-//     var $that = $('.top_tab'),
-//         top = $that.offset().top,
-//         stop = $('body').scrollTop();
-
-//     if ((top - stop) <= 60) {
-//         $that.addClass("t_fixed");
-//     } else {
-//         $that.removeClass("t_fixed");
-//     }
-//     console.log(top - stop);
-// });
-
-
-// (function() {
-//     var slide = {
-//         showDom: function () {
-//             var $width = $(document.body).width();
-
-//             $(".js_slide ul li").css({
-//                 "width": $width
-//             });
-//             $(".js_slide ul").css({
-//                 "display": "-webkit-box"
-//             });
-//         }
-//     };
-
-//     slide.showDom();
-//     $(window).resize(function () {
-//         slide.showDom();
-//     });
-// })();
