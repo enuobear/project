@@ -134,7 +134,7 @@
 
         display: none;
 
-        background: #000;
+        background: rgba(0, 0, 0, 0.6);
         width: 100%;
         padding: 20px 0;
         text-align: center;
@@ -166,27 +166,27 @@
     }
 
     .mod_video {
-        background: url(images/bg_web_video.jpg) no-repeat 0 bottom fixed #77b1d6;
+        background: url(images/bg_web_video.jpg) no-repeat 0 bottom #77b1d6;
         background-size: 100% auto;
     }
     .mod_app {
-        background: url(images/bg_web_app.jpg) no-repeat 0 bottom fixed #6bbde3;
+        background: url(images/bg_web_app.jpg) no-repeat 0 bottom #6bbde3;
         background-size: 100% auto;
     }
     .mod_detail {
-        background: url(images/bg_web_detail.jpg) no-repeat 0 bottom fixed #4eaafe;
+        background: url(images/bg_web_detail.jpg) no-repeat 0 bottom #4eaafe;
         background-size: 100% auto;
     }
     .mod_pdf {
-        background: url(images/bg_web_other.jpg) no-repeat 0 bottom fixed #686ea0;
+        background: url(images/bg_web_other.jpg) no-repeat 0 bottom #686ea0;
         background-size: 100% auto;
     }
     .mod_about {
-        background: url(images/bg_web_other.jpg) no-repeat 0 bottom fixed #686ea0;
+        background: url(images/bg_web_other.jpg) no-repeat 0 bottom #686ea0;
         background-size: 100% auto;
     }
     .mod_msg {
-        background: url(images/bg_web_other.jpg) no-repeat 0 bottom fixed #686ea0;
+        background: url(images/bg_web_other.jpg) no-repeat 0 bottom #686ea0;
         background-size: 100% auto;
     }
 

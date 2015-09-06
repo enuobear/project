@@ -156,6 +156,9 @@
                 top: -unit.getScreen().y*current + "px"
             });
             $("#js_icon li").eq(current).addClass("current");
+            if (current == 3) {
+                $(".mod_footer").show();
+            }
         },
 
         _footer: function () {
