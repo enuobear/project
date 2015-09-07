@@ -2,6 +2,7 @@ var os      = require('os'),
 	gulp    = require('gulp'),
 	shell   = require('gulp-shell'),
 	clean   = require('gulp-clean'),
+    uglify  = require('gulp-uglify'),
 	sass    = require('gulp-sass'),
 	connect = require('gulp-connect'),
     zip     = require('gulp-zip'),
@@ -19,9 +20,12 @@ var task = {
 	
 	move: function() {
 
+        gulp.src('./source/**/*.js')
+            .pipe(uglify())
+            .pipe(gulp.dest('./build/'));
+
 		gulp.src([
                 './source/**/*.html',
-                './source/**/*.js',
 				'./source/**/*.jpg',
 				'./source/**/*.png'
 			])

@@ -121,6 +121,8 @@
 
         _start: function (e) {
             var self = this;
+            
+            unit.eventStop(e);
 
             self.basePageX = unit.getPage(e, "pageX");
             self.basePageY = unit.getPage(e, "pageY");
@@ -131,6 +133,8 @@
 
         _move: function (e) {
             var self = this;
+            
+            unit.eventStop(e);
 
             if (!self.scrolling) {
                 return;
@@ -144,7 +148,6 @@
                 moveY = 0;
 
             if (self.moveReady) {
-                unit.eventStop(e);
 
                 distX = pageX - self.basePageX;
                 distY = pageY - self.basePageY;
@@ -415,7 +418,7 @@
          * 初始化页面中的view表现
          * 需要判断环境
          */
-        setView: function () {
+        setView: function (type) {
             var self = this;
             
             self.toggleMenu();
@@ -430,7 +433,9 @@
                 $("body").addClass("view_app");
                 self.setApp();
 
-                app.init();
+                if (!type || type != "no") {
+                    app.init();
+                }
             }
         },
 
@@ -671,9 +676,6 @@
             });
         }
     };
-
-    fn.setView();
-
 
     window.fn = fn;
 
