@@ -472,6 +472,9 @@
             $tbody.animate({
                 top: -unit.getScreen().y*current + "px"
             });
+
+            $(".js_footer").hide();
+
             $("#js_icon li").eq(current).addClass("current");
             if (current == 3) {
                 $(".mod_footer").show();
