@@ -27,7 +27,7 @@
             height: 50px;
 
             div {
-                width: 30px;
+                width: 25px;
                 height: 35px;
                 margin: 0 auto;
                 padding-top: 10px;
@@ -152,6 +152,7 @@
 
         height: 100%;
         width: 100%;
+        color: #000;
 
         // @include box();
     }
@@ -160,6 +161,7 @@
         // display: block;
 
         .mod_wrapper {
+            color: #fff;
             background: url(images/bg_app_video.jpg) no-repeat 0 bottom #82b6db;
             background-size: 100% auto;
 
